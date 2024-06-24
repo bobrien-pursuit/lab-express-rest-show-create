@@ -26,7 +26,6 @@ logs.get(`/:arrayIndex`, (req, res) => {
     res.json(logArray[arrayIndex]) :
     res.status(405).redirect(`http://localhost:2001/*`)
 
-
 })
 
 // POST
