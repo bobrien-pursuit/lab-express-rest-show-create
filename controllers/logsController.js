@@ -4,7 +4,7 @@ const express = require('express');
 
 // ROUTERS
 
-const log = express.Router();
+const logs = express.Router();
 
 // MODELS
 
@@ -12,15 +12,34 @@ const logArray = require("../models/log");
 
 
 // ROUTES
-// localhost:2001/logs/
-log.get(`/`, (req, res) => {
+// Index: localhost:2001/logs/
+logs.get(`/`, (req, res) => {
     res.json(logArray);
 });
 
-log.get(`*`, (req, res) => {
-    res.status(404).json({error: "Page not found."});
+// SHOW
+
+logs.get(`/:arrayIndex`, (req, res) => {
+    const { arrayIndex } = req.params;
+
+    logArray[arrayIndex] ?
+    res.json(logArray[arrayIndex]) :
+    res.status(405).redirect(`http://localhost:2001/*`)
+   // res.status(404).json({ error: "Log not found"});
+
+})
+
+// POST
+
+logs.post(`/`, (req, res) => {
+    logArray.push(req.body);
+    res.json(logArray[logArray.length - 1]);
+})
+
+logs.get(`*`, (req, res) => {
+    res.status(405).redirect(`http://localhost:2001/*`);
 });
 
 // EXPORTS
 
-module.exports = log;
+module.exports = logs;
