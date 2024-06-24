@@ -7,8 +7,9 @@ const app = express();
 
 // MIDDLEWARE
 
-app.use(express.jsaon());
-app.use(`/logs`, logsController)
+app.use(express.json());
+// localhost:2001/logs
+app.use(`/logs`, logsController);
 
 // ROUTES
 
@@ -16,6 +17,10 @@ app.use(`/logs`, logsController)
 app.get(`/`, (req, res) => {
     res.send(`Captain's Log`);
 });
+
+app.get(`*`, (reg, res) => {
+    res.status(404).json({error: `Page not found.`});
+})
 
 // EXPORTS
 

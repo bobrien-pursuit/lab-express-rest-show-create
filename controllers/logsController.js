@@ -1,24 +1,26 @@
 // DEPENDENCIES
+
 const express = require('express');
 
-// ROUTER
+// ROUTERS
 
-const logs = express.Router();
+const log = express.Router();
 
 // MODELS
 
-const logsArray = require("../models/logs");
+const logArray = require("../models/logs");
+
 
 // ROUTES
-
-logs.get(`/`, (req.res) => {
-    res.json(logsArray);
+// localhost:2001/logs/
+log.get(`/`, (req, res) => {
+    res.json(logArray);
 });
 
-logs.get(`*`, (req, res) => {
+log.get(`*`, (req, res) => {
     res.status(404).json({error: "Page not found."});
 });
 
 // EXPORTS
 
-module.exports = logs;
+module.exports = log;
