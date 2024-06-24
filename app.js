@@ -1,12 +1,14 @@
 // DEPENDENCIES
-
 const express = require("express");
-
+const logsController = require("./controllers/logsController");
 
 // insatnce of app
 const app = express();
-// tells instance of app to use json format
+
+// MIDDLEWARE
+
 app.use(express.jsaon());
+app.use(`/logs`, logsController)
 
 // ROUTES
 
