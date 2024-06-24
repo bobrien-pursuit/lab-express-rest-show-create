@@ -8,7 +8,7 @@ const log = express.Router();
 
 // MODELS
 
-const logArray = require("../models/logs");
+const logArray = require("../models/log");
 
 
 // ROUTES
