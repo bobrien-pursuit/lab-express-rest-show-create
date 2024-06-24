@@ -25,7 +25,7 @@ logs.get(`/:arrayIndex`, (req, res) => {
     logArray[arrayIndex] ?
     res.json(logArray[arrayIndex]) :
     res.status(405).redirect(`http://localhost:2001/*`)
-   // res.status(404).json({ error: "Log not found"});
+
 
 })
 
