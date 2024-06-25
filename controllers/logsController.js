@@ -1,7 +1,7 @@
 // DEPENDENCIES
 
 const express = require('express');
-const checkForKeys = require("../validations/logsValidations");
+const checkForKeys = require("../validations/logValidations");
 
 // ROUTERS
 
@@ -31,7 +31,7 @@ logs.get(`/:arrayIndex`, (req, res) => {
 
 // POST
 
-logs.post(`/`, checkForKeys, (req, res) => {
+logs.post(`/`, (req, res) => {
     logArray.push(req.body);
     res.json(logArray[logArray.length - 1]);
 })
@@ -51,7 +51,7 @@ logs.delete(`/:arrayIndex`, (req, res) => {
 
 // UPDATE
 
-logs.put(`/:arrayIndex`, checkForKeys, (req, res) => {
+logs.put(`/:arrayIndex`, (req, res) => {
     let { arrayIndex } = req.params;
 
     logArray[arrayIndex] = req.body;
