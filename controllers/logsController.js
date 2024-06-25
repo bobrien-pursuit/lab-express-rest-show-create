@@ -36,6 +36,19 @@ logs.post(`/`, checkForKeys, (req, res) => {
     res.json(logArray[logArray.length - 1]);
 })
 
+// DELETE
+
+logs.delete(`/:arrayIndex`, (req, res) => {
+    let { arrayIndex } = req.params;
+
+    if(logArray[arrayIndex]) {
+        logArray.splice(arrayIndex, 1);
+        res.redirect("/logs");
+    }
+    else
+        res.status(404).json( {error: "Not Found"});
+})
+
 logs.get(`*`, (req, res) => {
     res.status(405).redirect(`http://localhost:2001/*`);
 });
