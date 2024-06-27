@@ -43,7 +43,7 @@ logs.delete(`/:arrayIndex`, (req, res) => {
 
     if(logArray[arrayIndex]) {
         logArray.splice(arrayIndex, 1);
-        res.redirect("/logs");
+        res.json({ error: "Log Successfully Deleted."});
     }
     else
         res.status(404).json( {error: "Not Found"});
